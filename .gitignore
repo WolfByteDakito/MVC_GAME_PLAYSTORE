@@ -1,0 +1,4 @@
+/vendor
+/.vscode
+docker-compose.yml
+composer.lock
