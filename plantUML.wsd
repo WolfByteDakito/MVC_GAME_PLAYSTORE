@@ -1,0 +1,49 @@
+@startuml Gamestore
+skinparam style strict
+skinparam classAttributeIconSize 0
+
+' ==== Domain Classes ====
+class Game {
+  +id : int
+  +title : string
+  +price : float
+  +release_date : date
+  +description : text
+  +publisher_id : int
+}
+
+class Publisher {
+  +id : int
+  +name : string
+  +country : string
+}
+
+class User {
+  +id : int
+  +username : string
+  +email : string
+  +password_hash : string
+}
+
+class Order {
+  +id : int
+  +user_id : int
+  +order_date : datetime
+  +total_price : float
+}
+
+class OrderItem {
+  +order_id : int
+  +game_id : int
+  +quantity : int
+  +unit_price : float
+}
+
+' ==== Relations ====
+Publisher "1" -- "*" Game : publishes
+User "1" -- "*" Order : places
+Order "1" -- "*" OrderItem : contains
+Game "1" -- "*" OrderItem : appears in
+
+@enduml
+
